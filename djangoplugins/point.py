@@ -3,7 +3,7 @@ from __future__ import absolute_import
 from django import VERSION as django_version
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ObjectDoesNotExist
-from django.utils import six
+import six
 
 from .models import Plugin, PluginPoint as PluginPointModel, ENABLED
 from .utils import get_plugin_name, db_table_exists

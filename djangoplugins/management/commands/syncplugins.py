@@ -5,7 +5,7 @@ from optparse import make_option
 from django import VERSION as django_version
 
 from django.core.management.base import BaseCommand
-from django.utils import six
+import six
 
 from djangoplugins.point import PluginMount
 from djangoplugins.utils import get_plugin_name, load_plugins, db_table_exists

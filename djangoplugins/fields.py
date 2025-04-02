@@ -15,9 +15,13 @@ class PluginField(models.ForeignKey):
             kwargs['limit_choices_to'] = {
                 'point__pythonpath': get_plugin_name(point)
             }
-
+            
+        # Ensure 'on_delete' is in kwargs, avoiding multiple values error
+        if "on_delete" not in kwargs:
+            kwargs["on_delete"] = models.CASCADE
+        
         super(PluginField, self).__init__(
-            to=kwargs.pop("to", Plugin), on_delete=models.DO_NOTHING, *args, **kwargs)
+            to=kwargs.pop("to", Plugin), *args, **kwargs)
 
 
 class ManyPluginField(models.ManyToManyField):
